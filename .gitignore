@@ -1,0 +1,5 @@
+test_package/.DS_Store
+test_package/.sconsign.dblite
+test_package/*.sh
+test_package/SConscript_conandeps
+test_package/build/**

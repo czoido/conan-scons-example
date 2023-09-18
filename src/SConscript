@@ -1,0 +1,19 @@
+import sys
+
+AddOption('--debug-build', action='store_true', help='debug build')
+
+env = Environment(TARGET_ARCH="x86_64")
+
+is_debug = GetOption('debug_build')
+is_release = not is_debug
+
+if not is_debug:
+    env.Append(CPPDEFINES="NDEBUG")
+
+if is_debug:
+    env.Append(CXXFLAGS = '-g -ggdb')
+else:
+    env.Append(CXXFLAGS = '-O2')
+    env.Append(LINKFLAGS = '-O2')
+
+env.Library("hello", "hello.cpp")
